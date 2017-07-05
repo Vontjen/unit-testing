@@ -25,22 +25,50 @@ public class Fraction {
 
     @Override
     public String toString() {
-        return numerator+"/"+denominator;
+        return numerator + "/" + denominator;
     }
 
 
-    private void simplify(){
-        int factor = Utilities.greatestCommonFactor(numerator,denominator);
-        numerator/=factor;
-        denominator/=factor;
+    private void simplify() {
+        if (numerator == 0) {
+            denominator = 1;
+            return;
+        }
+        if (denominator<0){
+            denominator= Math.abs(denominator);
+            numerator = -numerator;
+        }
+
+        if(denominator==0){
+            throw new ArithmeticException("Divide by Zero!!!!");
+        }
+
+        int factor = Utilities.greatestCommonFactor(numerator, denominator);
+
+        numerator /= factor;
+        denominator /= factor;
+
+
     }
 
-    public Fraction add(Fraction b){
-        return new Fraction((numerator*b.denominator())+denominator*b.numerator(), denominator*b.denominator());
+    public Fraction add(Fraction b) {
+        return new Fraction((numerator * b.denominator()) + denominator * b.numerator(), denominator * b.denominator());
     }
 
-    public Fraction multiply(Fraction b){
-        return new Fraction((numerator*b.numerator()),denominator*b.denominator());
+    public Fraction subtract(Fraction b) {
+        return new Fraction((numerator * b.denominator()) - (denominator) * b.numerator(), denominator * b.denominator());
+    }
+
+    public Fraction multiply(Fraction b) {
+        return new Fraction((numerator * b.numerator()), denominator * b.denominator());
+    }
+
+    public Fraction divide(Fraction b) {
+        return this.multiply(b.reciprocal());
+    }
+
+    public Fraction reciprocal() {
+        return new Fraction(denominator, numerator);
     }
 
     @Override

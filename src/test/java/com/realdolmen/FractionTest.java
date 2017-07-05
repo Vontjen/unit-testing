@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by vdabcursist on 05/07/2017.
@@ -57,6 +58,22 @@ public class FractionTest {
         Fraction result = f.multiply(g);
         assertEquals(new Fraction(1,3),result);
     }
+
+    @Test(expected = ArithmeticException.class)
+    public void denominatorShouldntBeZero(){
+        new Fraction(1,0);
+
+    }
+
+    @Test
+    public void shouldBeEquals(){
+        Fraction a = new Fraction(1,2);
+        Fraction b = new Fraction(1,2);
+        assertEquals(a,b);
+        assertNotEquals(a,g);
+    }
+
+
 
     //Fractions set in comment because I initialized it in init() method
 }
