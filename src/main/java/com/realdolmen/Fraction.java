@@ -34,12 +34,12 @@ public class Fraction {
             denominator = 1;
             return;
         }
-        if (denominator<0){
-            denominator= Math.abs(denominator);
+        if (denominator < 0) {
+            denominator = Math.abs(denominator);
             numerator = -numerator;
         }
 
-        if(denominator==0){
+        if (denominator == 0) {
             throw new ArithmeticException("Divide by Zero!!!!");
         }
 

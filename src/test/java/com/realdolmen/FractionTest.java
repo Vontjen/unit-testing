@@ -15,14 +15,14 @@ public class FractionTest {
     private Fraction g;
 
     @Before
-    public void init(){
-        f = new Fraction(1,2);
-        g = new Fraction(4,6);
+    public void init() {
+        f = new Fraction(1, 2);
+        g = new Fraction(4, 6);
     }
 
 
     @Test
-    public void shouldSimplify(){
+    public void shouldSimplify() {
         //Fraction testFrac = new Fraction(25,5)
         assertEquals(2, g.numerator());
         assertEquals(3, g.denominator());
@@ -30,49 +30,48 @@ public class FractionTest {
     }
 
     @Test
-    public void shouldCreateFraction(){
+    public void shouldCreateFraction() {
         //Fraction f = new Fraction(1,2);
-        assertEquals(1,f.numerator());
-        assertEquals(2,f.denominator());
+        assertEquals(1, f.numerator());
+        assertEquals(2, f.denominator());
 
     }
 
     @Test
-    public void shouldToString(){
+    public void shouldToString() {
         //Fraction f = new Fraction(2,3);
-        assertEquals("2/3",g.toString());
+        assertEquals("2/3", g.toString());
     }
 
     @Test
-    public void shouldAdd(){
+    public void shouldAdd() {
         //Fraction f = new Fraction(1,2);
         //Fraction g = new Fraction(2,2);
         Fraction result = f.add(g);
-        assertEquals(new Fraction(7,6),result);
+        assertEquals(new Fraction(7, 6), result);
     }
 
     @Test
-    public void shouldMuliply(){
+    public void shouldMuliply() {
         //Fraction f = new Fraction(2,3);
         //Fraction g = new Fraction(6,2);
         Fraction result = f.multiply(g);
-        assertEquals(new Fraction(1,3),result);
+        assertEquals(new Fraction(1, 3), result);
     }
 
     @Test(expected = ArithmeticException.class)
-    public void denominatorShouldntBeZero(){
-        new Fraction(1,0);
+    public void denominatorShouldntBeZero() {
+        new Fraction(1, 0);
 
     }
 
     @Test
-    public void shouldBeEquals(){
-        Fraction a = new Fraction(1,2);
-        Fraction b = new Fraction(1,2);
-        assertEquals(a,b);
-        assertNotEquals(a,g);
+    public void shouldBeEquals() {
+        Fraction a = new Fraction(1, 2);
+        Fraction b = new Fraction(1, 2);
+        assertEquals(a, b);
+        assertNotEquals(a, g);
     }
-
 
 
     //Fractions set in comment because I initialized it in init() method
