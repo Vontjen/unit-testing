@@ -24,8 +24,6 @@ import static org.mockito.Mockito.*;
 public class PersonServiceTest {
 
 
-
-
     @Mock
     private PersonRepository personRepository;
 
@@ -34,7 +32,7 @@ public class PersonServiceTest {
 
 
     @InjectMocks
-    PersonService personService= new PersonService();
+    PersonService personService = new PersonService();
 
 
     Person p = new Person("Tjen", "Dekker", null, null);
@@ -49,20 +47,21 @@ public class PersonServiceTest {
     }
 
     @Test
-    public void personCanBeFound(){
+    public void personCanBeFound() {
         when(personRepository.find(anyInt())).thenReturn(anyObject());
         personService.findById(25);
         verify(personRepository).find(anyInt());
     }
 
     @Test
-    public void personCanBeRemoved(){
+    public void personCanBeRemoved() {
         when(personRepository.find(anyInt())).thenReturn(p);
         personService.remove(25);
         verify(personRepository).find(anyInt());
-        verify(personRepository).remove(p);
+        verify(personRepository).remove(captor.capture());
+        assertEquals("Tjen", captor.getValue().getFirstName());
+        assertEquals("Dekker", captor.getValue().getLastName());
     }
-
 
 
 }
